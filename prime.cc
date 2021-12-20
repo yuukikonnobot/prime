@@ -54,25 +54,21 @@ vector<uint64_t> generate_primes(const uint64_t n) {
   // Iterates over integers of the form 6k +- 1.
   for (i = 5; i <= sqrt_n; i += 4) {
     if (primality[i]) {
+      primes.push_back(i);
+
       for (uint64_t j = i * i; j <= n; j += i) {
         primality[j] = false;
       }
-
-      primes.push_back(i);
     }
 
     i += 2;
 
-    if (i > sqrt_n) {
-      break;
-    }
-
     if (primality[i]) {
+      primes.push_back(i);
+
       for (uint64_t j = i * i; j <= n; j += i) {
         primality[j] = false;
       }
-
-      primes.push_back(i);
     }
   }
 
