@@ -1,4 +1,4 @@
-// Prints the prime factorization of the first 20 decimal repunits.
+// Prints the prime factorization of the decimal repunits up to the 20th.
 #include "prime.h"
 #include <iostream>
 #include <string>

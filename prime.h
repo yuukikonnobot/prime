@@ -2,13 +2,12 @@
 #define PRIME_H
 
 #include <cmath>
+#include <cstdint>
 #include <vector>
 
-using ull = unsigned long long;
-
-bool is_prime(const ull);
-bool is_prime(const ull, std::vector<ull> const &);
-std::vector<ull> generate_primes(const ull);
-std::vector<ull> factor(ull);
+bool is_prime(const uint64_t);
+bool is_prime(const uint64_t, std::vector<uint64_t> const &);
+std::vector<uint64_t> generate_primes(const uint64_t);
+std::vector<uint64_t> factor(uint64_t);
 
 #endif // PRIME_H
