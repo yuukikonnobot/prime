@@ -77,7 +77,7 @@ vector<uint64_t> generate_primes(const uint64_t n) {
     }
 
     const uint64_t i_plus_2 = i + 2;
-    if (primality[i_plus_2]) {
+    if (i_plus_2 <= n && primality[i_plus_2]) {
       primes.push_back(i_plus_2);
     }
   }
