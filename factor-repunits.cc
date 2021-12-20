@@ -7,7 +7,7 @@
 using namespace std;
 
 int main() {
-  for (int i = 1; i <= 20; ++i) {
+  for (int i = 2; i <= 20; ++i) {
     const uint64_t repunit = stoull(string(i, '1'));
 
     cout << i << "\t" << repunit;
