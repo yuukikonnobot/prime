@@ -1,4 +1,4 @@
-// Prints prime numbers less than or equal to 10 million.
+// Prints the prime numbers less than or equal to 10 million.
 #include "prime.h"
 #include <iostream>
 
