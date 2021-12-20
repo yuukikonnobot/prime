@@ -52,7 +52,7 @@ vector<uint64_t> generate_primes(const uint64_t n) {
   const uint64_t sqrt_n = sqrt(n);
   uint64_t i;
   // Iterates over integers of the form 6k +- 1.
-  for (i = 5; i <= sqrt_n; i += 6) {
+  for (i = 5; i <= sqrt_n; i += 4) {
     if (primality[i]) {
       for (uint64_t j = i * i; j <= n; j += i) {
         primality[j] = false;
@@ -61,24 +61,34 @@ vector<uint64_t> generate_primes(const uint64_t n) {
       primes.push_back(i);
     }
 
-    const uint64_t i_plus_2 = i + 2;
-    if (primality[i_plus_2]) {
-      for (uint64_t j = i_plus_2 * i_plus_2; j <= n; j += i_plus_2) {
+    i += 2;
+
+    if (i > sqrt_n) {
+      break;
+    }
+
+    if (primality[i]) {
+      for (uint64_t j = i * i; j <= n; j += i) {
         primality[j] = false;
       }
 
-      primes.push_back(i_plus_2);
+      primes.push_back(i);
     }
   }
 
-  for (; i <= n; i += 6) {
+  for (; i <= n; i += 4) {
     if (primality[i]) {
       primes.push_back(i);
     }
 
-    const uint64_t i_plus_2 = i + 2;
-    if (i_plus_2 <= n && primality[i_plus_2]) {
-      primes.push_back(i_plus_2);
+    i += 2;
+
+    if (i > n) {
+      break;
+    }
+
+    if (primality[i]) {
+      primes.push_back(i);
     }
   }
 
@@ -106,16 +116,17 @@ vector<uint64_t> factor(uint64_t n) {
 
   const uint64_t sqrt_n = sqrt(n);
   // Divides by integers of the form 6k +- 1.
-  for (uint64_t i = 5; i <= sqrt_n; i += 6) {
+  for (uint64_t i = 5; i <= sqrt_n; i += 4) {
     while (n % i == 0) {
       prime_factors.push_back(i);
       n /= i;
     }
 
-    const uint64_t i_plus_2 = i + 2;
-    while (n % i_plus_2 == 0) {
-      prime_factors.push_back(i_plus_2);
-      n /= i_plus_2;
+    i += 2;
+
+    while (n % i == 0) {
+      prime_factors.push_back(i);
+      n /= i;
     }
   }
 
